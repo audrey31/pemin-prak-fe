@@ -77,6 +77,11 @@ const Login = () => {
       minH="100vh"
       bg={useColorModeValue("gray.50", "gray.800")}
     >
+      <Heading style={{ position : "absolute", top: "50px" }} textAlign="center" fontSize="4xl" cursor="pointer" onClick={() => {
+        router.push("/");
+      }}>
+          Home
+        </Heading>
       <Stack spacing={8} mx="auto" maxW="xl" py={12} px={6}>
         <Heading textAlign="center" fontSize="4xl">
           Sign in to your account

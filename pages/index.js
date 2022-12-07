@@ -64,7 +64,6 @@ export default function Home() {
 
   useEffect(() => {
     hasUserLogedIn();
-    console.log("ini user", user);
     getAllMahasiswa();
   }, [token]);
 
@@ -114,9 +113,7 @@ export default function Home() {
                         size="sm"
                         colorScheme="green"
                         onClick={() => {
-                          console.log("ini nim user", user.nim);
-                          console.log("ini nim page", mahasiswa.nim);
-                          if (user.nim != mahasiswa.nim) {
+                          if (user?.nim != mahasiswa.nim) {
                             alert(
                               "Silahkan login dengan kredensial yang sesuai"
                             );
