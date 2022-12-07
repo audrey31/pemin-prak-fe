@@ -91,9 +91,9 @@ const Detail = () => {
             token,
             validateStatus: false,
           },
-        },
+        }
       );
-      
+
       if (res.status !== 200) {
         alert(res.data.message);
         return;
@@ -119,7 +119,7 @@ const Detail = () => {
             token,
             validateStatus: false,
           },
-        },
+        }
       );
 
       if (res.status !== 200) {
@@ -227,21 +227,25 @@ const Detail = () => {
                 </Thead>
 
                 <Tbody>
-                  {mahasiswa.matakuliah?.map((mk) => (
-                    <Tr key={mk.id}>
-                      <Td>{mk.id}</Td>
-                      <Td>{mk.nama}</Td>
-                      <Td>
-                        <Button
-                          size="sm"
-                          colorScheme="red"
-                          onClick={() => deleteMk(mk.id, router.query.nim)}
-                        >
-                          Delete
-                        </Button>
-                      </Td>
-                    </Tr>
-                  ))}
+                  {mahasiswa.matakuliah
+                    ?.sort(function (a, b) {
+                      return a.id - b.id || a.name.localeCompare(b.name);
+                    })
+                    .map((mk) => (
+                      <Tr key={mk.id}>
+                        <Td>{mk.id}</Td>
+                        <Td>{mk.nama}</Td>
+                        <Td>
+                          <Button
+                            size="sm"
+                            colorScheme="red"
+                            onClick={() => deleteMk(mk.id, router.query.nim)}
+                          >
+                            Delete
+                          </Button>
+                        </Td>
+                      </Tr>
+                    ))}
                 </Tbody>
               </Table>
             </TableContainer>
